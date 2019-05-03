@@ -1,14 +1,14 @@
-# fylgja
+# fetchyeah
 
 Fetch wrappers.
 
-[![npm version](https://img.shields.io/npm/v/fylgja.svg)](https://npm.im/fylgja) [![CircleCI](https://circleci.com/gh/jane/fylgja.svg?style=svg)](https://circleci.com/gh/jane/fylgja) [![Coverage Status](https://coveralls.io/repos/github/jane/fylgja/badge.svg?branch=master)](https://coveralls.io/github/jane/fylgja?branch=master)
+[![npm version](https://img.shields.io/npm/v/fetchyeah.svg)](https://npm.im/fetchyeah) [![CircleCI](https://circleci.com/gh/jane/fetchyeah.svg?style=svg)](https://circleci.com/gh/jane/fetchyeah) [![Coverage Status](https://coveralls.io/repos/github/jane/fetchyeah/badge.svg?branch=master)](https://coveralls.io/github/jane/fetchyeah?branch=master)
 
 ----
 
 # Installation
 
-`npm i fylgja`
+`npm i fetchyeah`
 
 # Usage
 
@@ -16,8 +16,8 @@ Fetch wrappers.
 
 Net is an api-compatible wrapper around `fetch`. Just import `net` and use as if it was `fetch`.
 
-```js
-import { net } from 'fylgja'
+```javascript
+import { net } from 'fetchyeah'
 ```
 
 ## Net Methods
@@ -30,8 +30,8 @@ Usually you'll want to use these functions instead of using `net` directly:
 * `deleteJson`
 * `headJson`
 
-```js
-(async () => {
+```javascript
+;(async () => {
   const { bar } = await getJson('/foo')
   const quux = await postJson(`/baz/${bar}`)
   return quux
