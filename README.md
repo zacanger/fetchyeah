@@ -24,11 +24,12 @@ import { net } from 'fetchyeah'
 
 Usually you'll want to use these functions instead of using `net` directly:
 
+* `deleteJson`
 * `getJson`
+* `headJson`
+* `patchJson`
 * `postJson`
 * `putJson`
-* `deleteJson`
-* `headJson`
 
 ```javascript
 ;(async () => {
@@ -38,12 +39,9 @@ Usually you'll want to use these functions instead of using `net` directly:
 })()
 ```
 
-Or slightly lower-level:
-
-* `sendJson`
-* `sendJsonR`
-* `sendString`
-* `sendStringR`
+We only provide functions for these common HTTP methods, but you can easily add
+your own. Check out the source for notes on how to use `sendJson` and
+`sendString` directly.
 
 ## Environment
 
