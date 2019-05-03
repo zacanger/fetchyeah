@@ -48,7 +48,8 @@ Or slightly lower-level:
 ## Environment
 
 This library assumes `Promise` and `fetch` are available. You may need to
-polyfill them for older browsers, and provide `node-fetch` in Node.
+polyfill them for older browsers and provide Fetch for Node (I recommend
+`isomorphic-fetch`).
 
 ## Todo
 
