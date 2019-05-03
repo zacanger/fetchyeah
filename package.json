@@ -3,6 +3,12 @@
   "description": "Tiny (less than 3kb) fetch wrapper library",
   "version": "0.3.0",
   "author": "Jane Web Team",
+  "contributors": [
+    "Cory Brown (https://github.com/uniqname)",
+    "Madeline Trotter (https://madeline.dev)",
+    "Tom Priham (https://github.com/tompridham)",
+    "Zac Anger (https://zacanger.com)"
+  ],
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
