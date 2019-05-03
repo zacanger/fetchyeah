@@ -26,8 +26,8 @@
   },
   "bugs": "https://github.com/jane/fylgja/issues",
   "keywords": [
-    "json",
-    "fetch"
+    "fetch",
+    "json"
   ],
   "dependencies": {},
   "devDependencies": {
