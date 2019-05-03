@@ -2,7 +2,7 @@
 
 Fetch wrappers.
 
-![npm version](https://img.shields.io/npm/v/fylgja.svg)](https://npm.im/fylgja) [![CircleCI](https://circleci.com/gh/jane/fylgja.svg?style=svg)](https://circleci.com/gh/jane/fylgja) [![Coverage Status](https://coveralls.io/repos/github/jane/fylgja/badge.svg?branch=master)](https://coveralls.io/github/jane/fylgja?branch=master)
+[![npm version](https://img.shields.io/npm/v/fylgja.svg)](https://npm.im/fylgja) [![CircleCI](https://circleci.com/gh/jane/fylgja.svg?style=svg)](https://circleci.com/gh/jane/fylgja) [![Coverage Status](https://coveralls.io/repos/github/jane/fylgja/badge.svg?branch=master)](https://coveralls.io/github/jane/fylgja?branch=master)
 
 ----
 
