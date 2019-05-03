@@ -12,7 +12,7 @@
     "cover": "npm run test:jest -- --coverage --no-cache",
     "cover:coveralls": "if [ -n \"$COVERALLS_REPO_TOKEN\" ]; then coveralls < coverage/lcov.info; fi || true",
     "format": "prettier --write \"src/*.ts\"",
-    "prebuild": "npm run test:build && sortpack",
+    "prebuild": "sortpack && npm run test:build",
     "preversion": "npm run build",
     "test": "run-s -s test:lint test:jest",
     "test:build": "run-s -s test:lint cover cover:coveralls",
@@ -26,8 +26,12 @@
   },
   "bugs": "https://github.com/jane/fetchyeah/issues",
   "keywords": [
+    "browser",
     "fetch",
-    "json"
+    "json",
+    "node",
+    "request",
+    "xhr"
   ],
   "dependencies": {},
   "devDependencies": {
