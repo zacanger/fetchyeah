@@ -45,4 +45,13 @@ Or slightly lower-level:
 * `sendString`
 * `sendStringR`
 
+## Environment
+
+This library assumes `Promise` and `fetch` are available. You may need to
+polyfill them for older browsers, and provide `node-fetch` in Node.
+
+## Todo
+
+Tests
+
 [MIT](./LICENSE.md)

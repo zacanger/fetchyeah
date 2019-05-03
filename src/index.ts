@@ -1,14 +1,14 @@
+import { _global } from './util'
+
 export const net = (url: string, options?: RequestInit): Promise<Response> =>
   Promise.resolve().then(
     (): Promise<Response> => {
-      const requestP = window.fetch(url, {
+      const requestP = _global.fetch(url, {
         ...options,
       })
       return requestP
     }
   )
-
-export default net
 
 type Diff<T, U> = T extends U ? {} : T
 type Opts<T> = Diff<RequestInit, { body?: BodyInit }> & {
