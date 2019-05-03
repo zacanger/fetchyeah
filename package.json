@@ -1,7 +1,7 @@
 {
   "name": "fylgja",
   "description": "Fetch wrappers",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Jane Web Team",
   "license": "MIT",
   "main": "lib/index.js",
