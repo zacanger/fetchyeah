@@ -53,8 +53,8 @@ const getBodyOrFail = <T>(res: SimpleResponse<T>): Promise<T> =>
   res.ok ? Promise.resolve(res.body) : Promise.reject(res.body)
 
 // Performs an ajax call with tracking headers and
-// includes full response object.  The request body must
-// be a string if specified.  Response will also be a
+// includes full response object. The request body must
+// be a string if specified. Response will also be a
 // string, or null.
 export const sendStringR = (
   method: Method,
@@ -87,7 +87,7 @@ const decodeJsonOrNull = <T>(res): Promise<T | void> =>
   )
 
 // Performs an ajax call with tracking headers and
-// includes full response object.  If given, the request
+// includes full response object. If given, the request
 // body will be JSON stringified and any response body
 // will be parsed as JSON.
 export const sendJsonR = <ReqT extends {}, ResT>(
@@ -126,8 +126,8 @@ export const sendJsonR = <ReqT extends {}, ResT>(
   )
 
 // Performs an ajax call with tracking headers, returning
-// only the response body.  The request body must be a string
-// if specified.  Response will also be a string, or null.
+// only the response body. The request body must be a string
+// if specified. Response will also be a string, or null.
 export const sendString = (
   method: Method,
   url: string,

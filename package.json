@@ -1,6 +1,6 @@
 {
   "name": "fetchyeah",
-  "description": "Fetch wrappers",
+  "description": "Tiny (less than 3kb) fetch wrapper library",
   "version": "0.2.1",
   "author": "Jane Web Team",
   "license": "MIT",
