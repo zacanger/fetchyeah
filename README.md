@@ -34,14 +34,6 @@ Usually you'll want to use these functions instead of using `net` directly:
 * `postJson`
 * `putJson`
 
-```javascript
-;(async () => {
-  const { bar } = await getJson('/foo')
-  const quux = await postJson(`/baz/${bar}`)
-  return quux
-})()
-```
-
 We only provide functions for these common HTTP methods, but you can easily add
 your own. Check out the source for notes on how to use `sendJson` and
 `sendString` directly.
@@ -51,5 +43,58 @@ your own. Check out the source for notes on how to use `sendJson` and
 This library assumes `Promise` and `fetch` are available. You may need to
 polyfill them for older browsers and provide Fetch for Node (I recommend
 `isomorphic-fetch`).
+
+## Examples
+
+```javascript
+// node
+require('isomorphic-fetch') // brings in fetch for Node
+
+import { getJson } from 'fetchyeah'
+
+// some koa route
+router.get('/foo/:id', async (ctx) => {
+  try {
+    const thing = await getJson(`/some-service/${id}`)
+    ctx.type = 'application/json'
+    ctx.body = thing
+  } catch (e) {
+    someLogger.error(e)
+    ctx.status = 500
+    ctx.body = e
+  }
+})
+
+// in React
+import * as React from 'react'
+import { postJson } from 'fetchyeah'
+
+class Foo extends React.Component {
+  state = { things: null }
+
+  submitThings = () => {
+    postJson('/stuff', { body: this.state.things })
+  }
+
+  setThings = (e) => {
+    this.setState({ things: e.target.value })
+  }
+
+  render () {
+    return (
+      <React.Fragment>
+        <input
+          type="text"
+          onChange={this.setThings}
+          value={this.state.things }
+        />
+        <button onClick={submitThings}>
+          Send the things!
+        </button>
+      </React.Fragment>
+    )
+  }
+}
+```
 
 [MIT](./LICENSE.md)
