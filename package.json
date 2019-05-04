@@ -1,7 +1,7 @@
 {
   "name": "fetchyeah",
   "description": "Tiny (less than 3kb) fetch wrapper library",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "author": "Jane Web Team",
   "contributors": [
     "Cory Brown (https://github.com/uniqname)",
