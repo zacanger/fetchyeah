@@ -2,9 +2,12 @@
 
 Tiny (less than 3kb) fetch wrapper library
 
-[![npm version](https://img.shields.io/npm/v/fetchyeah.svg)](https://npm.im/fetchyeah) [![CircleCI](https://circleci.com/gh/jane/fetchyeah.svg?style=svg)](https://circleci.com/gh/jane/fetchyeah) [![Coverage Status](https://coveralls.io/repos/github/jane/fetchyeah/badge.svg?branch=master)](https://coveralls.io/github/jane/fetchyeah?branch=master)
+[![npm version](https://img.shields.io/npm/v/fetchyeah.svg)](https://npm.im/fetchyeah) [![CircleCI](https://circleci.com/gh/jane/fetchyeah.svg?style=svg)](https://circleci.com/gh/jane/fetchyeah) [![Coverage Status](https://coveralls.io/repos/github/jane/fetchyeah/badge.svg?branch=master)](https://coveralls.io/github/jane/fetchyeah?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/081700f7a21958f070df/maintainability)](https://codeclimate.com/github/jane/fetchyeah/maintainability)
 
 ----
+
+`fetchyeah` is a small fetch wrapper library that always parses JSON and returns
+JS. Smaller than Axios, Request, R2, and the `whatwg-fetch` polyfill itself.
 
 # Installation
 
@@ -20,7 +23,7 @@ Net is an api-compatible wrapper around `fetch`. Just import `net` and use as if
 import { net } from 'fetchyeah'
 ```
 
-## Net Methods
+## Methods
 
 Usually you'll want to use these functions instead of using `net` directly:
 
@@ -48,9 +51,5 @@ your own. Check out the source for notes on how to use `sendJson` and
 This library assumes `Promise` and `fetch` are available. You may need to
 polyfill them for older browsers and provide Fetch for Node (I recommend
 `isomorphic-fetch`).
-
-## Todo
-
-Tests
 
 [MIT](./LICENSE.md)
