@@ -6,6 +6,9 @@ Tiny (less than 3kb) fetch wrapper library
 
 ----
 
+`fetchyeah` is a small fetch wrapper library that always parses JSON and returns
+JS. Smaller than Axios, Request, R2, and the `whatwg-fetch` polyfill itself.
+
 # Installation
 
 `npm i fetchyeah`
@@ -20,7 +23,7 @@ Net is an api-compatible wrapper around `fetch`. Just import `net` and use as if
 import { net } from 'fetchyeah'
 ```
 
-## Net Methods
+## Methods
 
 Usually you'll want to use these functions instead of using `net` directly:
 
