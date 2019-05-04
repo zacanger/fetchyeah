@@ -74,6 +74,14 @@ class Foo extends React.Component {
 
   submitThings = () => {
     postJson('/stuff', { body: this.state.things })
+    .then((res) => {
+      if (res) {
+        alert(res)
+      }
+    })
+    .catch((err) => {
+      someErrorHandler(err)
+    })
   }
 
   setThings = (e) => {
