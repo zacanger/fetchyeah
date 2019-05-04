@@ -170,7 +170,7 @@ export const sendString = (
   sendStringR(method, url, options).then(getBodyOrFail)
 
 // Performs an ajax call with tracking headers, returning
-// only the response body.  If given, the request
+// only the response body. If given, the request
 // body will be JSON stringified and any response body
 // will be parsed as JSON.
 export const sendJson = <ReqT extends {}, ResT>(
