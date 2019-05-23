@@ -144,3 +144,79 @@ describe('fetchyeah', (): void => {
       })
   })
 })
+
+describe('utils', (): void => {
+  it('trim', (): void => {
+    expect(f.trim(' asdf ')).toBe('asdf')
+  })
+
+  it('refEquals', (): void => {
+    expect(f.refEquals(1)(1)).toBe(true)
+    expect(f.refEquals({ a: 1 })({ a: 2 })).toBe(false)
+  })
+
+  it('hasAnyBody', (): void => {
+    const fakeRes1 = {
+      headers: {
+        get() {
+          return 'foo'
+        },
+      },
+    }
+
+    const fakeRes2 = {
+      headers: {
+        get() {
+          return undefined
+        },
+      },
+    }
+
+    // @ts-ignore
+    expect(f.hasAnyBody(fakeRes1)).toBe(true)
+    // @ts-ignore
+    expect(f.hasAnyBody(fakeRes2)).toBe(false)
+  })
+
+  it('hasJsonBody', (): void => {
+    const fakeRes1 = {
+      headers: {
+        get() {
+          return 'application/json'
+        },
+      },
+    }
+
+    const fakeRes2 = {
+      headers: {
+        get() {
+          return 'foo'
+        },
+      },
+    }
+
+    // @ts-ignore
+    expect(f.hasJsonBody(fakeRes1)).toBe(true)
+    // @ts-ignore
+    expect(f.hasJsonBody(fakeRes2)).toBe(false)
+  })
+
+  it('toSimpleResponse', (): void => {
+    const body = {}
+    const e = {
+      ok: true,
+      status: 200,
+      headers: { 'content-type': 'foo' },
+    }
+
+    // @ts-ignore
+    expect(f.toSimpleResponse(e, body)).toStrictEqual({ ...e, body })
+  })
+
+  it('getBodyOrFail', (): void => {
+    // @ts-ignore
+    expect(f.getBodyOrFail({ ok: true, body: 1 })).resolves.toBe(1)
+    // @ts-ignore
+    expect(f.getBodyOrFail({ ok: false, body: 1 })).rejects.toBe(1)
+  })
+})

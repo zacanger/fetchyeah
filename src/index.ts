@@ -51,14 +51,15 @@ type Method =
   | 'UNLOCK'
   | 'UNSUBSCRIBE'
 
-const trim = (s: string): string => s.trim()
+export const trim = (s: string): string => s.trim()
 
-const refEquals = <T>(expected: T): ((a: T) => boolean) => (actual) =>
+export const refEquals = <T>(expected: T): ((a: T) => boolean) => (actual) =>
   expected === actual
 
-const hasAnyBody = (res: Response): boolean => !!res.headers.get('content-type')
+export const hasAnyBody = (res: Response): boolean =>
+  !!res.headers.get('content-type')
 
-const hasJsonBody = (res: Response): boolean => {
+export const hasJsonBody = (res: Response): boolean => {
   const contentType = res.headers.get('content-type')
   return (
     contentType != null &&
@@ -76,14 +77,17 @@ export type SimpleResponse<T> = {
   body: T
 }
 
-const toSimpleResponse = <T>(res: Response, body: T): SimpleResponse<T> => ({
+export const toSimpleResponse = <T>(
+  res: Response,
+  body: T
+): SimpleResponse<T> => ({
   ok: res.ok,
   status: res.status,
   headers: res.headers,
   body,
 })
 
-const getBodyOrFail = <T>(res: SimpleResponse<T>): Promise<T> =>
+export const getBodyOrFail = <T>(res: SimpleResponse<T>): Promise<T> =>
   res.ok ? Promise.resolve(res.body) : Promise.reject(res.body)
 
 // Performs an ajax call with tracking headers and
