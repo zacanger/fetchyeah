@@ -15,6 +15,12 @@ JS. Smaller than Axios, Request, R2, and the `whatwg-fetch` polyfill itself.
 
 # Usage
 
+```javascript
+import { fetchJson } from 'fetchyeah'
+
+fetchJson('/foo')
+```
+
 ## Methods
 
 * `deleteJson`
@@ -27,22 +33,6 @@ JS. Smaller than Axios, Request, R2, and the `whatwg-fetch` polyfill itself.
 We only provide functions for these common HTTP methods, but you can easily add
 your own. Check out the source for notes on how to use `sendJson` and
 `sendString` directly.
-
-## Net
-
-Net is an api-compatible wrapper around `fetch`. Just import `net` and use as if it was `fetch`.
-
-```javascript
-import { net } from 'fetchyeah'
-```
-
-Usually you'll want to use the exported JSON methods.
-
-## Environment
-
-This library assumes `Promise` and `fetch` are available. You may need to
-polyfill them for older browsers and provide Fetch for Node (I recommend
-`isomorphic-fetch`).
 
 ## Examples
 
@@ -108,5 +98,21 @@ class Foo extends React.Component {
   }
 }
 ```
+
+## Environment
+
+This library assumes `Promise` and `fetch` are available. You may need to
+polyfill them for older browsers and provide Fetch for Node (I recommend
+`isomorphic-fetch`).
+
+## Net
+
+Net is an api-compatible wrapper around `fetch`. Just import `net` and use as if it was `fetch`.
+
+```javascript
+import { net } from 'fetchyeah'
+```
+
+Usually you'll want to use the exported JSON methods.
 
 [MIT](./LICENSE.md)
