@@ -1,6 +1,8 @@
 # fetchyeah
 
-Tiny (less than 3kb) fetch wrapper library
+Miniscule JSON fetch wrapper library.
+
+~2.5kb minified, ~1kb gzipped.
 
 [![npm version](https://img.shields.io/npm/v/fetchyeah.svg)](https://npm.im/fetchyeah) [![CircleCI](https://circleci.com/gh/jane/fetchyeah.svg?style=svg)](https://circleci.com/gh/jane/fetchyeah) [![Coverage Status](https://coveralls.io/repos/github/jane/fetchyeah/badge.svg?branch=master)](https://coveralls.io/github/jane/fetchyeah?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/081700f7a21958f070df/maintainability)](https://codeclimate.com/github/jane/fetchyeah/maintainability)
 
@@ -88,7 +90,7 @@ class Foo extends React.Component {
         <input
           type="text"
           onChange={this.setThings}
-          value={this.state.things }
+          value={this.state.things}
         />
         <button onClick={submitThings}>
           Send the things!
@@ -104,15 +106,5 @@ class Foo extends React.Component {
 This library assumes `Promise` and `fetch` are available. You may need to
 polyfill them for older browsers and provide Fetch for Node (I recommend
 `isomorphic-fetch`).
-
-## Net
-
-Net is an api-compatible wrapper around `fetch`. Just import `net` and use as if it was `fetch`.
-
-```javascript
-import { net } from 'fetchyeah'
-```
-
-Usually you'll want to use the exported JSON methods.
 
 [MIT](./LICENSE.md)

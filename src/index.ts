@@ -1,14 +1,6 @@
 import { _global } from './util'
 
-export const net = (url: string, options?: RequestInit): Promise<Response> =>
-  Promise.resolve().then(
-    (): Promise<Response> => {
-      const requestP = _global.fetch(url, {
-        ...options,
-      })
-      return requestP
-    }
-  )
+const f = _global.fetch
 
 type Diff<T, U> = T extends U ? {} : T
 type Opts<T> = Diff<RequestInit, { body?: BodyInit }> & {
@@ -102,7 +94,7 @@ export const sendStringR = (
   Promise.resolve().then(
     (): Promise<SimpleResponse<string | void>> => {
       const credentials = 'include'
-      return net(url, {
+      return f(url, {
         method,
         credentials,
         ...options,
@@ -145,7 +137,7 @@ export const sendJsonR = <ReqT extends {}, ResT>(
         innerBody = JSON.stringify(body)
       }
       const credentials = 'include'
-      return net(url, {
+      return f(url, {
         method,
         credentials,
         // @ts-ignore body
