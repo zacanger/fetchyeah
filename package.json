@@ -2,13 +2,7 @@
   "name": "fetchyeah",
   "description": "Miniscule JSON fetch wrapper library.",
   "version": "2.0.0",
-  "author": "Jane Web Team",
-  "contributors": [
-    "Cory Brown (https://github.com/uniqname)",
-    "Madeline Trotter (https://madeline.dev)",
-    "Tom Priham (https://github.com/tompridham)",
-    "Zac Anger (https://zacanger.com)"
-  ],
+  "author": "Zac Anger (https://zacanger.com)",
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
@@ -26,12 +20,12 @@
     "test:lint": "eslint -c .eslintrc.json src/*.ts",
     "test:ts": "tsc --noEmit"
   },
-  "homepage": "https://github.com/jane/fetchyeah#readme",
+  "homepage": "https://github.com/zacanger/fetchyeah#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jane/fetchyeah.git"
+    "url": "https://github.com/zacanger/fetchyeah.git"
   },
-  "bugs": "https://github.com/jane/fetchyeah/issues",
+  "bugs": "https://github.com/zacanger/fetchyeah/issues",
   "keywords": [
     "browser",
     "fetch",
