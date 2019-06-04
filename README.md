@@ -4,7 +4,7 @@ Miniscule JSON fetch wrapper library.
 
 ~2.5kb minified, ~1kb gzipped.
 
-[![npm version](https://img.shields.io/npm/v/fetchyeah.svg)](https://npm.im/fetchyeah) [![CircleCI](https://circleci.com/gh/zacanger/fetchyeah.svg?style=svg)](https://circleci.com/gh/zacanger/fetchyeah) [![Coverage Status](https://coveralls.io/repos/github/zacanger/fetchyeah/badge.svg?branch=master)](https://coveralls.io/github/zacanger/fetchyeah?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/081700f7a21958f070df/maintainability)](https://codeclimate.com/github/zacanger/fetchyeah/maintainability)
+[![npm version](https://img.shields.io/npm/v/fetchyeah.svg)](https://npm.im/fetchyeah) [![CircleCI](https://circleci.com/gh/zacanger/fetchyeah.svg?style=svg)](https://circleci.com/gh/zacanger/fetchyeah) [![codecov](https://codecov.io/gh/zacanger/fetchyeah/branch/master/graph/badge.svg)](https://codecov.io/gh/zacanger/fetchyeah) [![Maintainability](https://api.codeclimate.com/v1/badges/081700f7a21958f070df/maintainability)](https://codeclimate.com/github/zacanger/fetchyeah/maintainability)
 
 ----
 
