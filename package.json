@@ -1,7 +1,7 @@
 {
   "name": "fetchyeah",
   "description": "Miniscule JSON fetch wrapper library.",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "author": "Jane Web Team",
   "contributors": [
     "Cory Brown (https://github.com/uniqname)",
