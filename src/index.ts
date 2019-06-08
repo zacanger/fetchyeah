@@ -108,13 +108,11 @@ export const sendStringR = (
   )
 
 const decodeJsonOrNull = <T>(res): Promise<T | void> =>
-  res.json().catch(
-    (e): null => {
-      // eslint-disable-next-line no-console
-      console.warn('Malformed JSON response received.', res, e)
-      return null
-    }
-  )
+  res.json().catch((e): null => {
+    // eslint-disable-next-line no-console
+    console.warn('Malformed JSON response received.', res, e)
+    return null
+  })
 
 // Performs an ajax call with tracking headers and
 // includes full response object. If given, the request
