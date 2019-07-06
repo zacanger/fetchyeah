@@ -22,3 +22,4 @@ pids
 x/
 .nyc_output
 /lib
+.rpt2_cache
