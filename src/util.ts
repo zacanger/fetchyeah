@@ -8,6 +8,7 @@ export const _global = (() => {
   if (typeof global !== 'undefined') {
     return global
   }
+  // eslint-disable-next-line
   // @ts-ignore
   return Function('return this')() // eslint-disable-line
 })()

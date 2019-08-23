@@ -1,4 +1,5 @@
 /* eslint-env jest */
+/* eslint-disable @typescript-eslint/ban-ts-ignore */
 
 import * as f from './index'
 import * as http from 'http'

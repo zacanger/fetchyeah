@@ -125,6 +125,7 @@ export const sendJsonR = <ReqT extends {}, ResT>(
 ): Promise<SimpleResponse<ResT | void>> =>
   Promise.resolve().then(
     (): Promise<SimpleResponse<ResT | void>> => {
+      // eslint-disable-next-line
       // @ts-ignore headers
       const { body, headers, ...innerOptions } = options
       const innerHeaders = headers ? new Headers(headers) : new Headers()
@@ -138,6 +139,7 @@ export const sendJsonR = <ReqT extends {}, ResT>(
       return f(url, {
         method,
         credentials,
+        // eslint-disable-next-line
         // @ts-ignore body
         body: innerBody,
         headers: innerHeaders,
@@ -171,6 +173,7 @@ export const sendJson = <ReqT extends {}, ResT>(
   method: Method,
   url: string,
   options?: Opts<ReqT>
+  // eslint-disable-next-line
   // @ts-ignore
 ): Promise<ResT | void> => sendJsonR(method, url, options).then(getBodyOrFail)
 
