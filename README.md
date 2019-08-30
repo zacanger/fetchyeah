@@ -107,4 +107,4 @@ This library assumes `Promise` and `fetch` are available. You may need to
 polyfill them for older browsers and provide Fetch for Node (I recommend
 `isomorphic-fetch`).
 
-[MIT](./LICENSE.md)
+[LICENSE](./LICENSE.md)

@@ -3,7 +3,7 @@
   "description": "Miniscule JSON fetch wrapper library.",
   "version": "2.2.6",
   "author": "Zac Anger (https://zacanger.com)",
-  "license": "MIT",
+  "license": "LGPL-3.0",
   "main": "lib/index.js",
   "scripts": {
     "build": "run-s -s build:clean build:rollup",
