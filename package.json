@@ -1,7 +1,7 @@
 {
   "name": "fetchyeah",
   "description": "Miniscule JSON fetch wrapper library.",
-  "version": "2.2.6",
+  "version": "3.0.0",
   "author": "Zac Anger (https://zacanger.com)",
   "license": "LGPL-3.0",
   "main": "lib/index.js",
