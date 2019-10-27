@@ -214,10 +214,12 @@ describe('utils', (): void => {
     expect(f.toSimpleResponse(e, body)).toStrictEqual({ ...e, body })
   })
 
+  /* eslint-disable jest/valid-expect */
   it('getBodyOrFail', (): void => {
     // @ts-ignore
     expect(f.getBodyOrFail({ ok: true, body: 1 })).resolves.toBe(1)
     // @ts-ignore
     expect(f.getBodyOrFail({ ok: false, body: 1 })).rejects.toBe(1)
   })
+  /* eslint-enable jest/valid-expect */
 })
