@@ -100,5 +100,9 @@
     "hooks": {
       "pre-commit": "npm run format && git add ."
     }
+  },
+  "funding": {
+    "type": "ko-fi",
+    "url": "https://ko-fi.com/zacanger"
   }
 }
