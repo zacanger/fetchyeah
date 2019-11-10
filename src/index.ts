@@ -1,6 +1,4 @@
-import { _global } from './util'
-
-const f = _global.fetch
+import { globalFetch as f } from './util'
 
 type Diff<T, U> = T extends U ? {} : T
 type Opts<T> = Diff<RequestInit, { body?: BodyInit }> & {
