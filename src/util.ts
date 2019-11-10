@@ -13,5 +13,6 @@ export const globalFetch = (() => {
     return window.fetch
   }
 
-  throw new Error('No fetch found!')
+  // eslint-disable-next-line no-console
+  console.error('No fetch found!')
 })()
