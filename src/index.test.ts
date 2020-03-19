@@ -1,7 +1,7 @@
 /* eslint-env jest */
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
 
-import * as f from './index'
+import * as f from '.'
 import * as http from 'http'
 
 const getRandomNumber = (min: number, max: number) =>
