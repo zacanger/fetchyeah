@@ -53,10 +53,7 @@ export const hasJsonBody = (res: Response): boolean => {
   const contentType = res.headers.get('content-type')
   return (
     contentType != null &&
-    contentType
-      .split(';')
-      .map(trim)
-      .some(refEquals('application/json'))
+    contentType.split(';').map(trim).some(refEquals('application/json'))
   )
 }
 
@@ -80,31 +77,6 @@ export const toSimpleResponse = <T>(
 export const getBodyOrFail = <T>(res: SimpleResponse<T>): Promise<T> =>
   res.ok ? Promise.resolve(res.body) : Promise.reject(res.body)
 
-// Performs an ajax call with tracking headers and
-// includes full response object. The request body must
-// be a string if specified. Response will also be a
-// string, or null.
-export const sendStringR = (
-  method: Method,
-  url: string,
-  options?: RequestInit | void
-): Promise<SimpleResponse<string | void>> =>
-  Promise.resolve().then(
-    (): Promise<SimpleResponse<string | void>> => {
-      const credentials = 'include'
-      return f(url, {
-        method,
-        credentials,
-        ...options,
-      }).then(
-        (res): Promise<SimpleResponse<string | void>> => {
-          const bodyP = hasAnyBody(res) ? res.text() : Promise.resolve(null)
-          return bodyP.then((body) => toSimpleResponse(res, body))
-        }
-      )
-    }
-  )
-
 const decodeJsonOrNull = <T>(res): Promise<T | void> =>
   res.json().catch((e): null => {
     // eslint-disable-next-line no-console
@@ -112,7 +84,7 @@ const decodeJsonOrNull = <T>(res): Promise<T | void> =>
     return null
   })
 
-// Performs an ajax call with tracking headers and
+// Performs an ajax call with headers and
 // includes full response object. If given, the request
 // body will be JSON stringified and any response body
 // will be parsed as JSON.
@@ -151,17 +123,7 @@ export const sendJsonR = <ReqT extends {}, ResT>(
     }
   )
 
-// Performs an ajax call with tracking headers, returning
-// only the response body. The request body must be a string
-// if specified. Response will also be a string, or null.
-export const sendString = (
-  method: Method,
-  url: string,
-  options?: RequestInit | void
-): Promise<string | void> =>
-  sendStringR(method, url, options).then(getBodyOrFail)
-
-// Performs an ajax call with tracking headers, returning
+// Performs an ajax call with headers, returning
 // only the response body. If given, the request
 // body will be JSON stringified and any response body
 // will be parsed as JSON.

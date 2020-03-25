@@ -2,7 +2,7 @@
 
 Miniscule JSON fetch wrapper library.
 
-~2.5kb minified, ~1kb gzipped.
+~2.4kb minified, ~1kb gzipped.
 
 [![npm version](https://img.shields.io/npm/v/fetchyeah.svg)](https://npm.im/fetchyeah) [![CircleCI](https://circleci.com/gh/zacanger/fetchyeah.svg?style=svg)](https://circleci.com/gh/zacanger/fetchyeah) [![codecov](https://codecov.io/gh/zacanger/fetchyeah/branch/master/graph/badge.svg)](https://codecov.io/gh/zacanger/fetchyeah) [![Maintainability](https://api.codeclimate.com/v1/badges/081700f7a21958f070df/maintainability)](https://codeclimate.com/github/zacanger/fetchyeah/maintainability) [![Patreon](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://www.patreon.com/zacanger) [![ko-fi](https://img.shields.io/badge/donate-KoFi-yellow.svg)](https://ko-fi.com/U7U2110VB)
 
@@ -32,9 +32,8 @@ fetchJson('/foo')
 * `postJson`
 * `putJson`
 
-We only provide functions for these common HTTP methods, but you can easily add
-your own. Check out the source for notes on how to use `sendJson` and
-`sendString` directly.
+This only provides functions for these common HTTP methods, but you can easily add
+your own. Check out the source for notes on how to use `sendJson` directly.
 
 ## Examples
 
