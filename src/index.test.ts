@@ -151,32 +151,9 @@ describe('utils', (): void => {
     expect(f.trim(' asdf ')).toBe('asdf')
   })
 
-  it('refEquals', (): void => {
-    expect(f.refEquals(1)(1)).toBe(true)
-    expect(f.refEquals({ a: 1 })({ a: 2 })).toBe(false)
-  })
-
-  it('hasAnyBody', (): void => {
-    const fakeRes1 = {
-      headers: {
-        get() {
-          return 'foo'
-        },
-      },
-    }
-
-    const fakeRes2 = {
-      headers: {
-        get() {
-          return undefined
-        },
-      },
-    }
-
-    // @ts-ignore
-    expect(f.hasAnyBody(fakeRes1)).toBe(true)
-    // @ts-ignore
-    expect(f.hasAnyBody(fakeRes2)).toBe(false)
+  it('eq', (): void => {
+    expect(f.eq(1)(1)).toBe(true)
+    expect(f.eq({ a: 1 })({ a: 2 })).toBe(false)
   })
 
   it('hasJsonBody', (): void => {

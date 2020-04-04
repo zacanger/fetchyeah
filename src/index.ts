@@ -43,17 +43,14 @@ type Method =
 
 export const trim = (s: string): string => s.trim()
 
-export const refEquals = <T>(expected: T): ((a: T) => boolean) => (actual) =>
+export const eq = <T>(expected: T): ((a: T) => boolean) => (actual) =>
   expected === actual
-
-export const hasAnyBody = (res: Response): boolean =>
-  !!res.headers.get('content-type')
 
 export const hasJsonBody = (res: Response): boolean => {
   const contentType = res.headers.get('content-type')
   return (
     contentType != null &&
-    contentType.split(';').map(trim).some(refEquals('application/json'))
+    contentType.split(';').map(trim).some(eq('application/json'))
   )
 }
 

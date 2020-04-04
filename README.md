@@ -27,7 +27,6 @@ fetchJson('/foo')
 
 * `deleteJson`
 * `getJson`
-* `headJson`
 * `patchJson`
 * `postJson`
 * `putJson`
