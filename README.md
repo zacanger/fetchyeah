@@ -18,9 +18,9 @@ JS. Smaller than Axios, Request, R2, and the `whatwg-fetch` polyfill itself.
 # Usage
 
 ```javascript
-import { fetchJson } from 'fetchyeah'
+import { getJson } from 'fetchyeah'
 
-fetchJson('/foo')
+getJson('/foo')
 ```
 
 ## Methods
@@ -33,6 +33,17 @@ fetchJson('/foo')
 
 This only provides functions for these common HTTP methods, but you can easily add
 your own. Check out the source for notes on how to use `sendJson` directly.
+
+The return value is always a simple response of type
+
+```typescript
+type SimpleResponse<T> = {
+  ok: boolean
+  status: number
+  headers: Headers
+  body: T
+}
+```
 
 ## Examples
 
@@ -99,10 +110,18 @@ class Foo extends React.Component {
 }
 ```
 
+Adding headers:
+
+```javascript
+import { postJson } from 'fetchyeah'
+
+postJson('/foo', { body: someObject, headers: 'x-foo-bar': 'baz' })
+```
+
 ## Environment
 
 This library assumes `Promise` and `fetch` are available. You may need to
 polyfill them for older browsers and provide Fetch for Node (I recommend
-`isomorphic-fetch`).
+`isomorphic-fetch`, `unfetch`, or `node-fetch`).
 
 [LICENSE](./LICENSE.md)
