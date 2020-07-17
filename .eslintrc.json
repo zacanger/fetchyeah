@@ -21,6 +21,7 @@
     "fp/no-let": 0,
     "fp/no-unused-expression": 0,
     "fp/no-mutation": 0,
-    "fp/no-mutating-methods": 0
+    "fp/no-mutating-methods": 0,
+    "@typescript-eslint/ban-types": 0
   }
 }
