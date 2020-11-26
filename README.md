@@ -115,7 +115,12 @@ Adding headers:
 ```javascript
 import { postJson } from 'fetchyeah'
 
-postJson('/foo', { body: someObject, headers: 'x-foo-bar': 'baz' })
+postJson('/foo', {
+  body: someObject,
+  headers: {
+    'x-foo-bar': 'baz',
+  }
+})
 ```
 
 ## Environment
