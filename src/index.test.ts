@@ -6,7 +6,7 @@ import * as http from 'http'
 const getRandomNumber = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min) + min)
 
-const getRandomPort = () => getRandomNumber(10000, 40000)
+const getRandomPort = () => getRandomNumber(10_000, 40_000)
 
 const serverHandler = (req, res) => {
   const body = []
