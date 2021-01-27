@@ -31,6 +31,7 @@ const serverHandler = (req, res) => {
   } else {
     res.writeHead(200, { 'content-type': 'application/json' })
     resBody.method = req.method
+    resBody.headers = req.headers
     res.end(JSON.stringify(resBody))
   }
 }
@@ -135,6 +136,27 @@ describe('fetchyeah', (): void => {
         expect(j.method).toBe('PUT')
         // @ts-ignore
         expect(j.a).toBe(1)
+        testServer.close()
+      })
+      .catch((e) => {
+        testServer.close(() => {
+          throw e
+        })
+      })
+  })
+
+  it('headers', (): void => {
+    const port = getRandomPort()
+    const testServer = http.createServer(serverHandler)
+    testServer.listen(port)
+    f.getJson(`http://localhost:${port}`, {
+      headers: { foo: 'bar', BAR: 'FOO' },
+    })
+      .then((j) => {
+        // @ts-ignore
+        expect(j.headers.bar).toBe('FOO')
+        // @ts-ignore
+        expect(j.headers.foo).toBe('bar')
         testServer.close()
       })
       .catch((e) => {

@@ -1,8 +1,10 @@
 import { globalFetch as f } from './util'
 
+type _Headers = { [key: string]: string }
 type Diff<T, U> = T extends U ? {} : T
 type Opts<T> = Diff<RequestInit, { body?: BodyInit }> & {
   body?: T
+  headers?: _Headers
 }
 
 type Method =

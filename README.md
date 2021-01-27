@@ -125,8 +125,7 @@ postJson('/foo', {
 
 ## Environment
 
-This library assumes `Promise` and `fetch` are available. You may need to
-polyfill them for older browsers and provide Fetch for Node (I recommend
-`isomorphic-fetch`, `unfetch`, or `node-fetch`).
+This library assumes `fetch` is available. You may need to polyfill it or
+provide Fetch if in Node.
 
 [LICENSE](./LICENSE.md)
