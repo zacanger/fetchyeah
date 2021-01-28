@@ -18,18 +18,22 @@ JS. Smaller than Axios, Request, R2, and the `whatwg-fetch` polyfill itself.
 # Usage
 
 ```javascript
-import { getJson } from 'fetchyeah'
+import { get } from 'fetchyeah'
 
-getJson('/foo')
+get('/foo')
 ```
 
 ## Methods
 
-* `deleteJson`
-* `getJson`
-* `patchJson`
-* `postJson`
-* `putJson`
+**Important** these methods were renamed in 4.x to remove the `Json` suffix.
+This library only deals with JSON, so that felt redundant and added a few
+useless extra bytes.
+
+* `del`
+* `get`
+* `patch`
+* `post`
+* `put`
 
 This only provides functions for these common HTTP methods, but you can easily add
 your own. Check out the source for notes on how to use `sendJson` directly.
@@ -52,12 +56,12 @@ Node:
 ```javascript
 require('isomorphic-fetch') // brings in fetch for Node
 
-import { getJson } from 'fetchyeah'
+import * as f from 'fetchyeah'
 
 // some koa route
 router.get('/foo/:id', async (ctx) => {
   try {
-    const thing = await getJson(`/some-service/${id}`)
+    const thing = await f.get(`/some-service/${id}`)
     ctx.type = 'application/json'
     ctx.body = thing
   } catch (e) {
@@ -72,13 +76,13 @@ Browser:
 
 ```javascript
 import * as React from 'react'
-import { postJson } from 'fetchyeah'
+import { post } from 'fetchyeah'
 
 class Foo extends React.Component {
   state = { things: null }
 
   submitThings = () => {
-    postJson('/stuff', { body: this.state.things })
+    post('/stuff', { body: this.state.things })
     .then((res) => {
       if (res) {
         alert(res)
@@ -113,9 +117,9 @@ class Foo extends React.Component {
 Adding headers:
 
 ```javascript
-import { postJson } from 'fetchyeah'
+import { post } from 'fetchyeah'
 
-postJson('/foo', {
+post('/foo', {
   body: someObject,
   headers: {
     'x-foo-bar': 'baz',

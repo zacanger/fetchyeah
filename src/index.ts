@@ -134,32 +134,32 @@ export const sendJson = <ReqT extends {}, ResT>(
 ): Promise<ResT | void> => sendJsonR(method, url, options).then(getBodyOrFail)
 
 // Helpers for sendJson which apply a method.
-export const deleteJson = <ReqT extends {}, ResT>(
+export const del = <ReqT extends {}, ResT>(
   url: string,
   options?: Opts<ReqT>
 ): Promise<ResT | void> => sendJson('DELETE', url, options)
 
-export const getJson = <ReqT extends {}, ResT>(
+export const get = <ReqT extends {}, ResT>(
   url: string,
   options?: Opts<ReqT>
 ): Promise<ResT | void> => sendJson('GET', url, options)
 
-export const headJson = <ReqT extends {}, ResT>(
+export const head = <ReqT extends {}, ResT>(
   url: string,
   options?: Opts<ReqT>
 ): Promise<SimpleResponse<ResT | void>> => sendJsonR('HEAD', url, options)
 
-export const patchJson = <ReqT extends {}, ResT>(
+export const patch = <ReqT extends {}, ResT>(
   url: string,
   options?: Opts<ReqT>
 ): Promise<ResT | void> => sendJson('PATCH', url, options)
 
-export const postJson = <ReqT extends {}, ResT>(
+export const post = <ReqT extends {}, ResT>(
   url: string,
   options?: Opts<ReqT>
 ): Promise<ResT | void> => sendJson('POST', url, options)
 
-export const putJson = <ReqT extends {}, ResT>(
+export const put = <ReqT extends {}, ResT>(
   url: string,
   options?: Opts<ReqT>
 ): Promise<ResT | void> => sendJson('PUT', url, options)

@@ -37,11 +37,11 @@ const serverHandler = (req, res) => {
 }
 
 describe('fetchyeah', (): void => {
-  it('deleteJson', (): void => {
+  it('del', (): void => {
     const port = getRandomPort()
     const testServer = http.createServer(serverHandler)
     testServer.listen(port)
-    f.deleteJson(`http://localhost:${port}`)
+    f.del(`http://localhost:${port}`)
       .then((j) => {
         // @ts-ignore
         expect(j.method).toBe('DELETE')
@@ -54,11 +54,11 @@ describe('fetchyeah', (): void => {
       })
   })
 
-  it('getJson', (): void => {
+  it('get', (): void => {
     const port = getRandomPort()
     const testServer = http.createServer(serverHandler)
     testServer.listen(port)
-    f.getJson(`http://localhost:${port}`)
+    f.get(`http://localhost:${port}`)
       .then((j) => {
         // @ts-ignore
         expect(j.method).toBe('GET')
@@ -71,11 +71,11 @@ describe('fetchyeah', (): void => {
       })
   })
 
-  it('headJson', (): void => {
+  it('head', (): void => {
     const port = getRandomPort()
     const testServer = http.createServer(serverHandler)
     testServer.listen(port)
-    f.headJson(`http://localhost:${port}`)
+    f.head(`http://localhost:${port}`)
       .then((j) => {
         expect(j.ok).toBe(true)
         expect(j.body).toBe(null)
@@ -88,11 +88,11 @@ describe('fetchyeah', (): void => {
       })
   })
 
-  it('patchJson', (): void => {
+  it('patch', (): void => {
     const port = getRandomPort()
     const testServer = http.createServer(serverHandler)
     testServer.listen(port)
-    f.patchJson(`http://localhost:${port}`, { body: { a: 1 } })
+    f.patch(`http://localhost:${port}`, { body: { a: 1 } })
       .then((j) => {
         // @ts-ignore
         expect(j.method).toBe('PATCH')
@@ -107,11 +107,11 @@ describe('fetchyeah', (): void => {
       })
   })
 
-  it('postJson', (): void => {
+  it('post', (): void => {
     const port = getRandomPort()
     const testServer = http.createServer(serverHandler)
     testServer.listen(port)
-    f.postJson(`http://localhost:${port}`, { body: { a: 1 } })
+    f.post(`http://localhost:${port}`, { body: { a: 1 } })
       .then((j) => {
         // @ts-ignore
         expect(j.method).toBe('POST')
@@ -126,11 +126,11 @@ describe('fetchyeah', (): void => {
       })
   })
 
-  it('putJson', (): void => {
+  it('put', (): void => {
     const port = getRandomPort()
     const testServer = http.createServer(serverHandler)
     testServer.listen(port)
-    f.putJson(`http://localhost:${port}`, { body: { a: 1 } })
+    f.put(`http://localhost:${port}`, { body: { a: 1 } })
       .then((j) => {
         // @ts-ignore
         expect(j.method).toBe('PUT')
@@ -149,7 +149,7 @@ describe('fetchyeah', (): void => {
     const port = getRandomPort()
     const testServer = http.createServer(serverHandler)
     testServer.listen(port)
-    f.getJson(`http://localhost:${port}`, {
+    f.get(`http://localhost:${port}`, {
       headers: { foo: 'bar', BAR: 'FOO' },
     })
       .then((j) => {
