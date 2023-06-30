@@ -1,4 +1,5 @@
 /* eslint-env jest */
+/* eslint-disable @typescript-eslint/no-floating-promises,@typescript-eslint/explicit-function-return-type */
 
 import * as f from '.'
 import * as http from 'http'
@@ -20,6 +21,7 @@ const serverHandler = (req, res) => {
     res.writeHead(200, { 'content-type': 'application/json' })
 
     req.on('data', (a) => {
+      // @ts-expect-error
       body.push(a)
     })
 
@@ -43,7 +45,7 @@ describe('fetchyeah', (): void => {
     testServer.listen(port)
     f.del(`http://localhost:${port}`)
       .then((j) => {
-        // @ts-ignore
+        // @ts-expect-error
         expect(j.method).toBe('DELETE')
         testServer.close()
       })
@@ -60,7 +62,7 @@ describe('fetchyeah', (): void => {
     testServer.listen(port)
     f.get(`http://localhost:${port}`)
       .then((j) => {
-        // @ts-ignore
+        // @ts-expect-error
         expect(j.method).toBe('GET')
         testServer.close()
       })
@@ -92,11 +94,12 @@ describe('fetchyeah', (): void => {
     const port = getRandomPort()
     const testServer = http.createServer(serverHandler)
     testServer.listen(port)
+    // @ts-expect-error
     f.patch(`http://localhost:${port}`, { body: { a: 1 } })
       .then((j) => {
-        // @ts-ignore
+        // @ts-expect-error
         expect(j.method).toBe('PATCH')
-        // @ts-ignore
+        // @ts-expect-error
         expect(j.a).toBe(1)
         testServer.close()
       })
@@ -111,11 +114,12 @@ describe('fetchyeah', (): void => {
     const port = getRandomPort()
     const testServer = http.createServer(serverHandler)
     testServer.listen(port)
+    // @ts-expect-error
     f.post(`http://localhost:${port}`, { body: { a: 1 } })
       .then((j) => {
-        // @ts-ignore
+        // @ts-expect-error
         expect(j.method).toBe('POST')
-        // @ts-ignore
+        // @ts-expect-error
         expect(j.a).toBe(1)
         testServer.close()
       })
@@ -130,11 +134,12 @@ describe('fetchyeah', (): void => {
     const port = getRandomPort()
     const testServer = http.createServer(serverHandler)
     testServer.listen(port)
+    // @ts-expect-error
     f.put(`http://localhost:${port}`, { body: { a: 1 } })
       .then((j) => {
-        // @ts-ignore
+        // @ts-expect-error
         expect(j.method).toBe('PUT')
-        // @ts-ignore
+        // @ts-expect-error
         expect(j.a).toBe(1)
         testServer.close()
       })
@@ -150,12 +155,12 @@ describe('fetchyeah', (): void => {
     const testServer = http.createServer(serverHandler)
     testServer.listen(port)
     f.get(`http://localhost:${port}`, {
-      headers: { foo: 'bar', BAR: 'FOO' },
+      headers: { foo: 'bar', BAR: 'FOO' }
     })
       .then((j) => {
-        // @ts-ignore
+        // @ts-expect-error
         expect(j.headers.bar).toBe('FOO')
-        // @ts-ignore
+        // @ts-expect-error
         expect(j.headers.foo).toBe('bar')
         testServer.close()
       })
@@ -180,23 +185,23 @@ describe('utils', (): void => {
   it('hasJsonBody', (): void => {
     const fakeRes1 = {
       headers: {
-        get() {
+        get () {
           return 'application/json'
-        },
-      },
+        }
+      }
     }
 
     const fakeRes2 = {
       headers: {
-        get() {
+        get () {
           return 'foo'
-        },
-      },
+        }
+      }
     }
 
-    // @ts-ignore
+    // @ts-expect-error
     expect(f.hasJsonBody(fakeRes1)).toBe(true)
-    // @ts-ignore
+    // @ts-expect-error
     expect(f.hasJsonBody(fakeRes2)).toBe(false)
   })
 
@@ -205,19 +210,17 @@ describe('utils', (): void => {
     const e = {
       ok: true,
       status: 200,
-      headers: { 'content-type': 'foo' },
+      headers: { 'content-type': 'foo' }
     }
 
-    // @ts-ignore
+    // @ts-expect-error
     expect(f.toSimpleResponse(e, body)).toStrictEqual({ ...e, body })
   })
 
-  /* eslint-disable jest/valid-expect */
   it('getBodyOrFail', (): void => {
-    // @ts-ignore
+    // @ts-expect-error
     expect(f.getBodyOrFail({ ok: true, body: 1 })).resolves.toBe(1)
-    // @ts-ignore
+    // @ts-expect-error
     expect(f.getBodyOrFail({ ok: false, body: 1 })).rejects.toBe(1)
   })
-  /* eslint-enable jest/valid-expect */
 })

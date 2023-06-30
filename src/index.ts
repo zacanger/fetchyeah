@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-invalid-void-type */
+
 import { globalFetch as f } from './util'
 
-type _Headers = { [key: string]: string }
+interface _Headers { [key: string]: string }
 type Diff<T, U> = T extends U ? {} : T
 type Opts<T> = Diff<RequestInit, { body?: BodyInit }> & {
   body?: T
@@ -51,12 +53,13 @@ export const eq = <T>(expected: T): ((a: T) => boolean) => (actual) =>
 export const hasJsonBody = (res: Response): boolean => {
   const contentType = res.headers.get('content-type')
   return (
+    // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
     contentType != null &&
     contentType.split(';').map(trim).some(eq('application/json'))
   )
 }
 
-export type SimpleResponse<T> = {
+export interface SimpleResponse<T> {
   ok: boolean
   status: number
   headers: Headers
@@ -67,16 +70,16 @@ export const toSimpleResponse = <T>(
   res: Response,
   body: T
 ): SimpleResponse<T> => ({
-  ok: res.ok,
-  status: res.status,
-  headers: res.headers,
-  body,
-})
+    ok: res.ok,
+    status: res.status,
+    headers: res.headers,
+    body
+  })
 
-export const getBodyOrFail = <T>(res: SimpleResponse<T>): Promise<T> =>
-  res.ok ? Promise.resolve(res.body) : Promise.reject(res.body)
+export const getBodyOrFail = async <T>(res: SimpleResponse<T>): Promise<T> =>
+  res.ok ? await Promise.resolve(res.body) : await Promise.reject(res.body)
 
-const decodeJsonOrNull = <T>(res): Promise<T | void> =>
+const decodeJsonOrNull = async <T>(res): Promise<T | void> =>
   res.json().catch((e): null => {
     // eslint-disable-next-line no-console
     console.warn('Malformed JSON response received.', res, e)
@@ -87,36 +90,40 @@ const decodeJsonOrNull = <T>(res): Promise<T | void> =>
 // includes full response object. If given, the request
 // body will be JSON stringified and any response body
 // will be parsed as JSON.
-export const sendJsonR = <ReqT extends {}, ResT>(
+export const sendJsonR = async <ReqT extends {}, ResT>(
   method: Method,
   url: string,
   options: Opts<ReqT> = {}
 ): Promise<SimpleResponse<ResT | void>> =>
-  Promise.resolve().then(
-    (): Promise<SimpleResponse<ResT | void>> => {
-      // @ts-ignore headers
+  await Promise.resolve().then(
+    async (): Promise<SimpleResponse<ResT | void>> => {
       const { body, headers, ...innerOptions } = options
-      const innerHeaders = headers ? new Headers(headers) : new Headers()
+      const innerHeaders = (headers != null) ? new Headers(headers) : new Headers()
       innerHeaders.append('accept', 'application/json; charset=utf-8')
       let innerBody: string | void
-      if (body) {
+      if (body != null) {
         innerHeaders.append('content-type', 'application/json; charset=utf-8')
         innerBody = JSON.stringify(body)
       }
       const credentials = 'include'
+      /* eslint-disable @typescript-eslint/return-await */
+      // @ts-expect-error fetch should exist and if not the dev will check their
+      // console
       return f(url, {
         method,
         credentials,
-        // @ts-ignore body
+        // @ts-expect-error body
         body: innerBody,
         headers: innerHeaders,
-        ...innerOptions,
+        ...innerOptions
       }).then(
-        (res): Promise<SimpleResponse<ResT | void>> => {
+        async (res): Promise<SimpleResponse<ResT | void>> => {
+          /* eslint-enable @typescript-eslint/return-await */
+          // @ts-expect-error i'll figure it out later
           const bodyP: Promise<ResT | void> = hasJsonBody(res)
             ? decodeJsonOrNull(res)
             : Promise.resolve(null)
-          return bodyP.then((body) => toSimpleResponse(res, body))
+          return await bodyP.then((body) => toSimpleResponse(res, body))
         }
       )
     }
@@ -126,40 +133,40 @@ export const sendJsonR = <ReqT extends {}, ResT>(
 // only the response body. If given, the request
 // body will be JSON stringified and any response body
 // will be parsed as JSON.
-export const sendJson = <ReqT extends {}, ResT>(
+export const sendJson = async <ReqT extends {}, ResT>(
   method: Method,
   url: string,
   options?: Opts<ReqT>
-  // @ts-ignore
-): Promise<ResT | void> => sendJsonR(method, url, options).then(getBodyOrFail)
+  // @ts-expect-error
+): Promise<ResT | void> => await sendJsonR(method, url, options).then(getBodyOrFail)
 
 // Helpers for sendJson which apply a method.
-export const del = <ReqT extends {}, ResT>(
+export const del = async <ReqT extends {}, ResT>(
   url: string,
   options?: Opts<ReqT>
-): Promise<ResT | void> => sendJson('DELETE', url, options)
+): Promise<ResT | void> => await sendJson('DELETE', url, options)
 
-export const get = <ReqT extends {}, ResT>(
+export const get = async <ReqT extends {}, ResT>(
   url: string,
   options?: Opts<ReqT>
-): Promise<ResT | void> => sendJson('GET', url, options)
+): Promise<ResT | void> => await sendJson('GET', url, options)
 
-export const head = <ReqT extends {}, ResT>(
+export const head = async <ReqT extends {}, ResT>(
   url: string,
   options?: Opts<ReqT>
-): Promise<SimpleResponse<ResT | void>> => sendJsonR('HEAD', url, options)
+): Promise<SimpleResponse<ResT | void>> => await sendJsonR('HEAD', url, options)
 
-export const patch = <ReqT extends {}, ResT>(
+export const patch = async <ReqT extends {}, ResT>(
   url: string,
   options?: Opts<ReqT>
-): Promise<ResT | void> => sendJson('PATCH', url, options)
+): Promise<ResT | void> => await sendJson('PATCH', url, options)
 
-export const post = <ReqT extends {}, ResT>(
+export const post = async <ReqT extends {}, ResT>(
   url: string,
   options?: Opts<ReqT>
-): Promise<ResT | void> => sendJson('POST', url, options)
+): Promise<ResT | void> => await sendJson('POST', url, options)
 
-export const put = <ReqT extends {}, ResT>(
+export const put = async <ReqT extends {}, ResT>(
   url: string,
   options?: Opts<ReqT>
-): Promise<ResT | void> => sendJson('PUT', url, options)
+): Promise<ResT | void> => await sendJson('PUT', url, options)

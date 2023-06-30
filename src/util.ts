@@ -2,10 +2,8 @@ export const globalFetch = (() => {
   if (
     typeof global !== 'undefined' &&
     'fetch' in global &&
-    // @ts-ignore
     typeof global.fetch === 'function'
   ) {
-    // @ts-ignore
     return global.fetch
   }
 
