@@ -23,10 +23,6 @@ get('/foo')
 
 ## Methods
 
-**Important** these methods were renamed in 4.x to remove the `Json` suffix.
-This library only deals with JSON, so that felt redundant and added a few
-useless extra bytes.
-
 * `del`
 * `get`
 * `patch`
