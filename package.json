@@ -1,7 +1,7 @@
 {
   "name": "fetchyeah",
   "description": "Miniscule JSON fetch wrapper library.",
-  "version": "4.1.1",
+  "version": "5.0.0",
   "author": "Zac Anger (https://zacanger.com)",
   "funding": {
     "type": "ko-fi",
