@@ -27,7 +27,7 @@
   "homepage": "https://github.com/zacanger/fetchyeah#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zacanger/fetchyeah.git"
+    "url": "git+https://github.com/zacanger/fetchyeah.git"
   },
   "bugs": "https://github.com/zacanger/fetchyeah/issues",
   "keywords": [
