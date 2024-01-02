@@ -1,7 +1,7 @@
 {
   "name": "fetchyeah",
   "description": "Miniscule JSON fetch wrapper library.",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "author": "Zac Anger (https://zacanger.com)",
   "funding": {
     "type": "ko-fi",
@@ -27,7 +27,7 @@
   "homepage": "https://github.com/zacanger/fetchyeah#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zacanger/fetchyeah.git"
+    "url": "git+https://github.com/zacanger/fetchyeah.git"
   },
   "bugs": "https://github.com/zacanger/fetchyeah/issues",
   "keywords": [
