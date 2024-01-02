@@ -21,7 +21,7 @@
     "test": "run-s -s test:ts test:lint test:jest",
     "test:build": "run-s -s test:ts test:lint cover",
     "test:jest": "jest",
-    "test:lint": "ts-standard src/*.ts",
+    "test:lint": "ts-standard src/*.ts --fix",
     "test:ts": "tsc --noEmit"
   },
   "homepage": "https://github.com/zacanger/fetchyeah#readme",
