@@ -1,3 +1,6 @@
+/**
+ * Gets fetch from Node global window
+ */
 export const globalFetch = (() => {
   if (
     typeof global !== 'undefined' &&
