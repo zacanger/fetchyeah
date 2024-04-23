@@ -14,6 +14,6 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v1
         with:
-          node-version: 20.x
-      - run: npm i --legacy-peer-deps
-      - run: npm t
+          node-version: 21.x
+      - run: npm ci
+      - run: npm run build

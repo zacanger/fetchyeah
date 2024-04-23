@@ -86,10 +86,12 @@ const decodeJsonOrNull = async <T>(res): Promise<T | void> =>
     return null
   })
 
-// Performs an ajax call with headers and
-// includes full response object. If given, the request
-// body will be JSON stringified and any response body
-// will be parsed as JSON.
+/**
+ * Performs an ajax call with headers and
+ * includes full response object. If given, the request
+ * body will be JSON stringified and any response body
+ * will be parsed as JSON.
+ */
 export const sendJsonR = async <ReqT extends {}, ResT>(
   method: Method,
   url: string,
@@ -129,10 +131,12 @@ export const sendJsonR = async <ReqT extends {}, ResT>(
     }
   )
 
-// Performs an ajax call with headers, returning
-// only the response body. If given, the request
-// body will be JSON stringified and any response body
-// will be parsed as JSON.
+/**
+ * Performs an ajax call with headers, returning
+ * only the response body. If given, the request
+ * body will be JSON stringified and any response body
+ * will be parsed as JSON.
+ */
 export const sendJson = async <ReqT extends {}, ResT>(
   method: Method,
   url: string,
